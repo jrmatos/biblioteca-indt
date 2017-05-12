@@ -3,7 +3,7 @@ Implementation-Title: biblioteca-indt
 Implementation-Version: 0.0.1-SNAPSHOT
 Built-By: paulo
 Implementation-Vendor-Id: br.com.indt.biblioteca
-Build-Jdk: 1.8.0_121
+Build-Jdk: 1.8.0_131
 Created-By: Maven Integration for Eclipse
 Implementation-Vendor: Pivotal Software, Inc.
 

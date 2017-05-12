@@ -1,4 +1,4 @@
-package br.com.indt.biblioteca;
+package br.com.indt.biblioteca.models;
 
 public class Greeting {
 	private final long id;
