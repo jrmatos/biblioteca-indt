@@ -2,141 +2,26 @@
 <html ng-app="app">
 	<head>
 		<title>Biblioteca INDT</title>
-		<link rel="stylesheet" href="app/css/style.css">
+		<link rel="stylesheet" href="app/assets/css/style.css">
 		<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
 	</head>
 	<body>
-		<header class="container">
-			<h1 class="text-center">Biblioteca INDT</h1>
-		</header>
-
-		<div class="main container">
-			<table class="table table-bordered table-hover">
-				<thead>
-					<tr>
-						<th>Titulo</th>
-						<th>Autor</th>
-						<th>Editora</th>
-						<th>Ano</th>
-						<th>Páginas</th>
-						<th>ISBN</th>
-						<th></th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td><input class="form-control" type="text"/></td>
-						<td><input class="form-control" type="text"/></td>
-						<td><input class="form-control" type="text"/></td>
-						<td><input class="form-control" type="text"/></td>
-						<td><input class="form-control" type="text"/></td>
-						<td><input class="form-control" type="text"/></td>
-						<td>
-							<button class="btn btn-filter" title="Buscar">
-								<span class="glyphicon glyphicon-filter" aria-hidden="true"></span>
-							</button>
-							<button class="btn btn-clear" title="Limpar">
-								<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-							</button>
-						</td>
-					</tr>
-					<tr>
-						<td>O melhor do JavaScript</td>
-						<td>Douglas Crockford</td>
-						<td>O'Reilly</td>
-						<td>2008</td>
-						<td>125</td>
-						<td>897545</td>
-						<td>
-							<button class="btn btn-edit" title="Editar">
-								<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-							</button>
-							<button class="btn btn-danger btn-remove" title="Remover">
-								<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-							</button>
-						</td>
-					</tr>
-					<tr>
-						<td>O melhor do JavaScript</td>
-						<td>Douglas Crockford</td>
-						<td>O'Reilly</td>
-						<td>2008</td>
-						<td>125</td>
-						<td>897545</td>
-						<td>
-							<button class="btn btn-edit" title="Editar">
-								<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-							</button>
-							<button class="btn btn-danger btn-remove" title="Remover">
-								<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-							</button>
-						</td>
-					</tr>
-					<tr>
-						<td>O melhor do JavaScript</td>
-						<td>Douglas Crockford</td>
-						<td>O'Reilly</td>
-						<td>2008</td>
-						<td>125</td>
-						<td>897545</td>
-						<td>
-							<button class="btn btn-edit" title="Editar">
-								<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-							</button>
-							<button class="btn btn-danger btn-remove" title="Remover">
-								<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-							</button>
-						</td>
-					</tr>
-					<tr>
-						<td>O melhor do JavaScript</td>
-						<td>Douglas Crockford</td>
-						<td>O'Reilly</td>
-						<td>2008</td>
-						<td>125</td>
-						<td>897545</td>
-						<td>
-							<button class="btn btn-edit" title="Editar">
-								<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-							</button>
-							<button class="btn btn-danger btn-remove" title="Remover">
-								<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-							</button>
-						</td>
-					</tr>
-					<tr>
-						<td>O melhor do JavaScript</td>
-						<td>Douglas Crockford</td>
-						<td>O'Reilly</td>
-						<td>2008</td>
-						<td>125</td>
-						<td>897545</td>
-						<td>
-							<button class="btn btn-edit" title="Editar">
-								<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-							</button>
-							<button class="btn btn-danger btn-remove" title="Remover">
-								<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-							</button>
-						</td>
-					</tr>
-				</tbody>
-			</table>
-
-        	
-
-		</div>
-		<!--<div ui-view></div>-->
+		<!-- app container -->
+		<div ui-view></div>
 
 		<!-- dependency scripts -->
 		<script type="text/javascript" src="bower_components/angular/angular.js"></script>
 		<script type="text/javascript" src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
 		<script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
-		<script type="text/javascript" src="bower_components/bootstrap/dist/bootstrap.min.js"></script>
+		<script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 		
 		<!-- app scripts -->
-		<script type="text/javascript" src="src/app.js"></script>
-		<script type="text/javascript" src="src/modules/library/libraryModule.js"></script>
+		<script type="text/javascript" src="app/modules/library/libraryModule.js"></script>
+		<script type="text/javascript" src="app/modules/library/libraryCtrl.js"></script>
+		<script type="text/javascript" src="app/modules/library/libraryService.js"></script>
+		<script type="text/javascript" src="app/modules/library/libraryRoute.js"></script>
+		<script type="text/javascript" src="app/app.js"></script>
+		<script type="text/javascript" src="app/constants.js"></script>
 		
 	</body>
 </html>
