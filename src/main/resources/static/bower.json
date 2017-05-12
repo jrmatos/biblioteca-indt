@@ -1,0 +1,17 @@
+{
+  "name": "biblioteca-indt",
+  "homepage": "https://github.com/jrmatos/biblioteca-indt",
+  "authors": [
+    "Paulo Matos <paulojomatos@gmail.com>"
+  ],
+  "description": "",
+  "main": "index.html",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

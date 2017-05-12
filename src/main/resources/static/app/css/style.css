@@ -1,0 +1,23 @@
+/* indt blue: #00b2d1 */
+/* indt green: #00B262 */
+
+header h1{
+    /*color: #00b2d1;*/
+}
+
+table th{
+    color: #00b2d1;
+}
+
+table td:last-of-type{
+    width: 125px;
+    text-align: right;
+}
+
+table tr:first-child {
+    background-color: #f1f1f1;
+}
+
+span.glyphicon{
+    top: 4px;
+}
