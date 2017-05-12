@@ -9,7 +9,7 @@
     function LibraryCtrl(initialBookList) {
          var vm = this;
 
-        vm.books = initialBookList;
+        vm.books = initialBookList.data;
 
     }
 

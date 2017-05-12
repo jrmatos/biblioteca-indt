@@ -3,10 +3,10 @@
 
     angular.module('app')
     .constant('ENDPOINTS', {
-        addBook: '',
-        removeBook: '',
-        editBook: '',
-        listBooks: ''
+        addBook: '/book/',
+        removeBook: '/book/',
+        editBook: '/book/',
+        listBooks: '/book/find'
     });
-
+    
 })();
