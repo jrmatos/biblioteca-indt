@@ -2,11 +2,23 @@
 /* indt green: #00B262 */
 
 header h1{
-    /*color: #00b2d1;*/
+}
+
+.pagination-newbook-container nav{
+    float: left;
+}
+
+.pagination-newbook-container button{
+    float: right;
+    margin-top: 20px;
 }
 
 table th{
-    color: #00b2d1;
+    color: #337ab7;
+}
+
+table th, table td{
+    text-align: center;
 }
 
 table td:last-of-type{

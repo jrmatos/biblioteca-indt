@@ -9,7 +9,12 @@
             url:'/biblioteca',
             templateUrl: 'app/modules/library/library.html',
             controller: 'LibraryCtrl',
-            controllerAs: 'vm'
+            controllerAs: 'vm',
+            resolve: {
+                initialBookList: ['LibraryService', function (LibraryService) {
+                    return LibraryService.getBooks();
+                }]
+            }
         });
 
         $urlRouterProvider.otherwise('/biblioteca');

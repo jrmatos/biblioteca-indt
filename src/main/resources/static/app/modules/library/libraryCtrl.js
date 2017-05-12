@@ -4,12 +4,13 @@
     angular.module('library')
     .controller('LibraryCtrl', LibraryCtrl);
 
-    LibraryCtrl.$inject = [];
+    LibraryCtrl.$inject = ['initialBookList'];
 
-    function LibraryCtrl() {
+    function LibraryCtrl(initialBookList) {
          var vm = this;
 
-         vm.text = 'hello world!';
+        vm.books = initialBookList;
+
     }
 
 })();
