@@ -4,18 +4,23 @@
     angular.module('library')
     .controller('LibraryCtrl', LibraryCtrl);
 
-    LibraryCtrl.$inject = ['initialBookList', 'LibraryService', 'ngToast'];
+    LibraryCtrl.$inject = ['LibraryService', 'ngToast', '$scope'];
 
-    function LibraryCtrl(initialBookList, LibraryService, ngToast) {
+    function LibraryCtrl(LibraryService, ngToast, $scope) {
         var vm = this;
 
-        vm.books = initialBookList.data;
+        vm.books = [];
         vm.bookFilter = {};
+        vm.page = 1;
 
         vm.findBooks = function () {
-            LibraryService.findBooks(vm.bookFilter)
+            LibraryService.findBooks(vm.bookFilter, vm.page)
                 .then(function (response) {
-                    vm.books = response.data;
+                    vm.page = response.data.page;
+                    vm.books[vm.page - 1] = response.data.books;
+                    vm.totalBooks = response.data.totalBooks;
+                    vm.pageSize = response.data.pageSize;
+                    createPagination(vm.page, calculateTotalPages());
                 })
                 .catch(function (e) {
                     console.error(e);
@@ -74,12 +79,7 @@
 
                 promise
                     .then(function (response) {
-                        if(typeof self.editingBookIndex === 'number') {
-                            vm.books[self.editingBookIndex] = response.data;
-                        }
-                        else {
-                            vm.books.unshift(response.data);
-                        }
+                        vm.findBooks(); // reload books
                         ngToast.create(successMessage);
                     })
                     .catch(function (e) {
@@ -93,12 +93,11 @@
             }
         }
 
-
         vm.removeBook = function (bookId, $index) {
             if(confirm('Deseja mesmo remover esse livro?')) {
                 LibraryService.removeBook(bookId)
                 .then(function (response){
-                    vm.books.splice($index, 1);
+                    vm.findBooks(); // reload books
                     ngToast.create('Livro removido com sucesso!');
                 })
                 .catch(function (e) {
@@ -106,6 +105,35 @@
                 });
             }
         }
+
+        function createPagination (page, totalPages) {
+            angular.element('#page-selection').bootpag({
+                total: totalPages,
+                page: page,
+                maxVisible: 5,
+                leaps: true,
+                firstLastUse: true,
+                first: '←',
+                last: '→',
+                wrapClass: 'pagination',
+                activeClass: 'active',
+                disabledClass: 'disabled',
+                nextClass: 'next',
+                prevClass: 'prev',
+                lastClass: 'last',
+                firstClass: 'first'
+            }).on("page", function(event, num){
+                vm.page = num;
+                $scope.$apply();
+                vm.findBooks();
+            }); 
+        }
+
+        function calculateTotalPages() {
+            return Math.ceil(vm.totalBooks / vm.pageSize);
+        }
+
+        vm.findBooks();
 
 
     }

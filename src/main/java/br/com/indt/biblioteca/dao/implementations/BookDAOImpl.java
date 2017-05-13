@@ -31,9 +31,8 @@ public class BookDAOImpl implements BookDAO{
 		return book;
 	}
 
-	public List<Book> find(Book bookFilter, Integer page) {
+	public List<Book> find(Book bookFilter, Integer page, Integer pageSize) {
 		
-		Integer pageSize = 10;
 		Integer skip = (page != null) ? (page - 1) * pageSize: 0;
 		
 		Criteria criteria = entityManager.unwrap(Session.class).createCriteria(Book.class);
@@ -54,6 +53,14 @@ public class BookDAOImpl implements BookDAO{
 		entityManager.remove(book);
 	}
 	
+	public Integer getBooksQuantity() {
+		return entityManager
+				.unwrap(Session.class)
+				.createCriteria(Book.class)
+				.list()
+				.size();
+	}
+	
 	private void addRestrictionIfNotNull(Criteria criteria, String propertyName, Object value) {
 	    if (value != null) {
 	    	if(value instanceof Integer) {
@@ -63,6 +70,15 @@ public class BookDAOImpl implements BookDAO{
 	    		criteria.add(Restrictions.like(propertyName, String.valueOf(value), MatchMode.ANYWHERE).ignoreCase());
 	    	}
 	    }
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Book> findall() {
+		return entityManager
+				.unwrap(Session.class)
+				.createCriteria(Book.class)
+				.list();
 	}
 
 }

@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.indt.biblioteca.models.Book;
+import br.com.indt.biblioteca.models.dto.FindBooksResponseDTO;
 import br.com.indt.biblioteca.services.BookService;
  
  
@@ -24,21 +25,12 @@ public class BookController {
      
     @Autowired
     private BookService bookService;
-     
-//    @ResponseStatus(HttpStatus.OK)
-//    @RequestMapping(value = "/{bookId}",
-//        method = RequestMethod.GET, 
-//        produces = MediaType.APPLICATION_JSON_VALUE)
-//    public Book get(@PathVariable(value = "bookId") String bookId){
-//        return bookService.findById(bookId);
-//    }
-    
     
     @ResponseStatus(HttpStatus.OK)
     @RequestMapping(method = RequestMethod.POST,
         consumes = MediaType.APPLICATION_JSON_VALUE,
         produces = MediaType.APPLICATION_JSON_VALUE)
-    public Book update(@RequestBody Book book){
+    public Book create(@RequestBody Book book){
     	System.out.println("Create => " + book);
         return bookService.create(book);
     }
@@ -47,26 +39,32 @@ public class BookController {
     @RequestMapping(method = RequestMethod.PUT,
         consumes = MediaType.APPLICATION_JSON_VALUE,
         produces = MediaType.APPLICATION_JSON_VALUE)
-    public Book create(@RequestBody Book book){    	
+    public Book update(@RequestBody Book book){    	
         return bookService.update(book);
     }
-    
      
     @ResponseStatus(HttpStatus.OK)
-    @RequestMapping(value = "/find",
+    @RequestMapping(value = "/find/{page}",
         method = RequestMethod.GET,
         produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<Book> find(@RequestParam(value="title", required=false) String title,
-				    	   @RequestParam(value="author", required=false) String author,
-				    	   @RequestParam(value="publisher", required=false) String publisher,
-				    	   @RequestParam(value="year", required=false) Integer year,
-				    	   @RequestParam(value="pages", required= false) Integer pages,
-				    	   @RequestParam(value="isbn", required=false) Integer isbn,
-				    	   @RequestParam(value="page", required=false) Integer page) {
+    public FindBooksResponseDTO find(@PathVariable(value="page") Integer page,
+    								 @RequestParam(value="title", required=false) String title,
+							    	 @RequestParam(value="author", required=false) String author,
+							    	 @RequestParam(value="publisher", required=false) String publisher,
+							    	 @RequestParam(value="year", required=false) Integer year,
+							    	 @RequestParam(value="pages", required= false) Integer pages,
+							    	 @RequestParam(value="isbn", required=false) Integer isbn) {
     	
         return bookService.find(new Book(title, author, publisher, year, pages, isbn), page);
     }   
     
+    @ResponseStatus(HttpStatus.OK)
+    @RequestMapping(value = "/find",
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<Book> findall() {
+        return bookService.findall();
+    } 
     
     @ResponseStatus(HttpStatus.OK)
     @RequestMapping(value = "/{bookId}",

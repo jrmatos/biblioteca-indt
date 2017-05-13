@@ -13,14 +13,17 @@
 
             var filters = [];
             Object.keys(bookFilter).forEach(function (attrName) {
+                var value = bookFilter[attrName];
+                if(value === null) return;
                 filters.push(attrName + '=' + bookFilter[attrName]);
             });
 
             return filters.join('&');
         }
 
-        var _findBooks = function (bookFilter) {
-            return $http.get(HOST + ENDPOINTS.findBooks + '?' + _bookFilterToQueryString(bookFilter))
+        var _findBooks = function (bookFilter, page) {
+            var url = HOST + ENDPOINTS.findBooks + '/' + page + '?' + _bookFilterToQueryString(bookFilter);
+            return $http.get(url)
                         .then(function (response) {
                             return $q.resolve(response);
                         })
