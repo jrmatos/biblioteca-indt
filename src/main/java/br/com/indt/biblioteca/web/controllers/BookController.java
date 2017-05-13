@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -55,8 +56,14 @@ public class BookController {
     @RequestMapping(value = "/find",
         method = RequestMethod.GET,
         produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<Book> find(){
-        return bookService.find();
+    public List<Book> find(@RequestParam(value="title", required=false) String title,
+				    	   @RequestParam(value="author", required=false) String author,
+				    	   @RequestParam(value="publisher", required=false) String publisher,
+				    	   @RequestParam(value="year", required=false) Integer year,
+				    	   @RequestParam(value="pages", required= false) Integer pages,
+				    	   @RequestParam(value="isbn", required=false) Integer isbn) {
+    	
+        return bookService.find(new Book(title, author, publisher, year, pages, isbn));
     }   
     
     

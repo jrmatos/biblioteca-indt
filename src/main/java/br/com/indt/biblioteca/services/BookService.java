@@ -8,7 +8,7 @@ public interface BookService {
      
     Book create(final Book book);
     Book update(Book book);
-    List<Book> find();    
+    List<Book> find(Book bookFilter);    
     void delete(final String bookId);
  
 }
