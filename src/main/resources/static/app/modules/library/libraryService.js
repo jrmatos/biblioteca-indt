@@ -4,16 +4,16 @@
     angular.module('library')
     .factory('LibraryService', LibraryService);
 
-    LibraryService.$inject = ['ENDPOINTS', '$http'];
+    LibraryService.$inject = ['HOST', 'ENDPOINTS', '$http'];
 
-    function LibraryService(ENDPOINTS, $http) {
+    function LibraryService(HOST, ENDPOINTS, $http) {
 
-        var _getBooks = function () {
-            return $http.get(ENDPOINTS.listBooks);
+        var _findBooks = function () {
+            return $http.get(HOST + ENDPOINTS.findBooks);
         }
 
         return {
-            getBooks: _getBooks
+            findBooks: _findBooks
         }
     }
 

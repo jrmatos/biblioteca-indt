@@ -23,8 +23,8 @@ public class Book implements Serializable{
 	@Column(name="id")
     private Integer id;
     
-    @Column(name="name")
-    private String name;
+    @Column(name="title")
+    private String title;
     
     @Column(name="author")
     private String author;
@@ -41,67 +41,82 @@ public class Book implements Serializable{
     @Column(name="isbn")
     private Integer isbn;
     
-    
 	public Book() {
 		super();
 	}
-	public Book(String name, String author, String publisher, Integer year, Integer pages, Integer isbn) {
+
+	public Book(String title, String author, String publisher, Integer year, Integer pages, Integer isbn) {
 		super();
-		this.name = name;
+		this.title = title;
 		this.author = author;
 		this.publisher = publisher;
 		this.year = year;
 		this.pages = pages;
 		this.isbn = isbn;
 	}
+	
 	public Integer getId() {
 		return id;
 	}
+
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	public String getName() {
-		return name;
+
+	public String getTitle() {
+		return title;
 	}
-	public void setName(String name) {
-		this.name = name;
+
+	public void setTitle(String title) {
+		this.title = title;
 	}
+
 	public String getAuthor() {
 		return author;
 	}
+
 	public void setAuthor(String author) {
 		this.author = author;
 	}
+
 	public String getPublisher() {
 		return publisher;
 	}
+
 	public void setPublisher(String publisher) {
 		this.publisher = publisher;
 	}
+
 	public Integer getYear() {
 		return year;
 	}
+
 	public void setYear(Integer year) {
 		this.year = year;
 	}
+
 	public Integer getPages() {
 		return pages;
 	}
+
 	public void setPages(Integer pages) {
 		this.pages = pages;
 	}
+
 	public Integer getIsbn() {
 		return isbn;
 	}
+
 	public void setIsbn(Integer isbn) {
 		this.isbn = isbn;
 	}
+
 	@Override
 	public String toString() {
-		return "Book [id=" + id + ", name=" + name + ", author=" + author + ", publisher=" + publisher + ", year="
+		return "Book [id=" + id + ", title=" + title + ", author=" + author + ", publisher=" + publisher + ", year="
 				+ year + ", pages=" + pages + ", isbn=" + isbn + "]";
 	}
     
-		
+    		
 	   
 }

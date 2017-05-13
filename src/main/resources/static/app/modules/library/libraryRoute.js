@@ -12,7 +12,7 @@
             controllerAs: 'vm',
             resolve: {
                 initialBookList: ['LibraryService', function (LibraryService) {
-                    return LibraryService.getBooks();
+                    return LibraryService.findBooks();
                 }]
             }
         });

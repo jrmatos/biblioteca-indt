@@ -18,7 +18,7 @@ public class BookServiceImpl implements BookService {
     // create and persist a new book 
     @Override
     public Book create(Book book) {
-    	return bookDAO.save(new Book(book.getName(), book.getAuthor(), book.getPublisher(), book.getYear(), book.getPages(), book.getIsbn()));
+    	return bookDAO.save(new Book(book.getTitle(), book.getAuthor(), book.getPublisher(), book.getYear(), book.getPages(), book.getIsbn()));
     }
     
     // update a book

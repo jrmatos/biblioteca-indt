@@ -30,3 +30,7 @@ table tr:first-child {
 span.glyphicon{
     top: 4px;
 }
+
+p[ng-message]{
+    color: red;
+}
