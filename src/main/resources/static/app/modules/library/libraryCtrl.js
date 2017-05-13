@@ -10,6 +10,22 @@
         var vm = this;
 
         vm.books = initialBookList.data;
+        vm.bookFilter = {};
+
+        vm.findBooks = function () {
+            LibraryService.findBooks(vm.bookFilter)
+                .then(function (response) {
+                    vm.books = response.data;
+                })
+                .catch(function (e) {
+                    console.error(e);
+                });
+        }
+
+        vm.clearBookFilter = function () {
+            vm.bookFilter = {};
+            vm.findBooks();
+        }
 
         vm.modal = {
             title: '',

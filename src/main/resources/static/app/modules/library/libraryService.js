@@ -8,8 +8,19 @@
 
     function LibraryService(HOST, ENDPOINTS, $http) {
 
-        var _findBooks = function () {
-            return $http.get(HOST + ENDPOINTS.findBooks);
+        var _bookFilterToQueryString = function (bookFilter) {
+            if(!bookFilter) return;
+
+            var filters = [];
+            Object.keys(bookFilter).forEach(function (attrName) {
+                filters.push(attrName + '=' + bookFilter[attrName]);
+            });
+
+            return filters.join('&');
+        }
+
+        var _findBooks = function (bookFilter) {
+            return $http.get(HOST + ENDPOINTS.findBooks + '?' + _bookFilterToQueryString(bookFilter));
         }
 
         var _saveBook = function (book) {

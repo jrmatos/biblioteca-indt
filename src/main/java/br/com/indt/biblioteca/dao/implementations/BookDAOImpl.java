@@ -3,15 +3,11 @@ package br.com.indt.biblioteca.dao.implementations;
 import java.util.List;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityTransaction;
 import javax.persistence.PersistenceContext;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
 import javax.transaction.Transactional;
 
 import org.hibernate.Criteria;
 import org.hibernate.Session;
-import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Component;
@@ -36,6 +32,7 @@ public class BookDAOImpl implements BookDAO{
 	}
 
 	public List<Book> find(Book bookFilter) {
+		System.out.println(bookFilter);
 		
 		Criteria criteria = entityManager.unwrap(Session.class).createCriteria(Book.class);
 		addRestrictionIfNotNull(criteria, "title", bookFilter.getTitle());
@@ -55,7 +52,12 @@ public class BookDAOImpl implements BookDAO{
 	
 	private void addRestrictionIfNotNull(Criteria criteria, String propertyName, Object value) {
 	    if (value != null) {
-	        criteria.add(Restrictions.like(propertyName, (String) value, MatchMode.ANYWHERE));
+	    	if(value instanceof Integer) {
+	    		criteria.add(Restrictions.eq(propertyName, value));
+	    	}
+	    	else {
+	    		criteria.add(Restrictions.like(propertyName, String.valueOf(value), MatchMode.ANYWHERE).ignoreCase());
+	    	}
 	    }
 	}
 
