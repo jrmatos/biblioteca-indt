@@ -28,7 +28,7 @@ public class BookServiceImpl implements BookService {
     }
  
  
-    // return all books based on a filter
+    // return all books
     @Override
     public List<Book> find() {
         return bookDAO.find();

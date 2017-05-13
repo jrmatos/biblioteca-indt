@@ -23,13 +23,10 @@ public class BookDAOImpl implements BookDAO{
 		return book;
 	}
 
-	@Override
 	public List<Book> find() {
-//		return entityManager.createQuery("select e from Module e where e.status = :status",
-//			    Book.class).setParameter("status", status).getResultList();
-		return entityManager.createQuery("SELECT b FROM Book b", Book.class).getResultList();
+//		return entityManager.createQuery("select b from Book b where b.id = :id",
+//			    Book.class).setParameter("id", id).getResultList();
+		return entityManager.createQuery("SELECT b FROM Book b ORDER BY b.id DESC", Book.class).getResultList();
 	}
-
-	
 
 }
