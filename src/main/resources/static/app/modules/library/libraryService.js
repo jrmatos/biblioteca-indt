@@ -16,6 +16,11 @@
             return $http.post(HOST + ENDPOINTS.saveBook, book);
         }
 
+        var _updateBook = function (book) {
+            var url = HOST + ENDPOINTS.updateBook;
+            return $http.put(url, book);
+        }
+
         var _removeBook = function (bookId) {
             return $http.delete(HOST + ENDPOINTS.removeBook + '/' + bookId);
         }
@@ -23,7 +28,8 @@
         return {
             findBooks: _findBooks,
             saveBook: _saveBook,
-            removeBook: _removeBook
+            removeBook: _removeBook,
+            updateBook: _updateBook
         }
     }
 

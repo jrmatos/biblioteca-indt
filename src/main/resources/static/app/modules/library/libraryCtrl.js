@@ -15,17 +15,20 @@
             title: '',
             book: {},
             form: null,
-            open: function (book) {  
+            editingBookIndex: null,
+            open: function (book, editingBookIndex) {  
 
                 // editing
                 if(book) {
                     this.title = 'Editar livro';
                     this.book = angular.copy(book);
+                    this.editingBookIndex = editingBookIndex;
                 }
                 // creating
                 else {
                     this.title = 'Novo livro';
                     this.book = {};
+                     this.editingBookIndex = null;
                 } 
 
                 // it was submitted at least once
@@ -39,14 +42,32 @@
             save: function (bookForm) {
                 // save form reference
                 this.form = bookForm;
-
                 vm.isLoading = true;
-                LibraryService.saveBook(this.book)
+                var promise = null;
+                var successMessage = '';
+                var self = this;
+
+                if(this.book.id) {
+                    promise = LibraryService.updateBook(this.book);
+                    successMessage = 'Livro editado com sucesso!';
+                }
+                else {
+                    promise = LibraryService.saveBook(this.book);
+                    successMessage = 'Livro salvo com sucesso!';
+                }
+
+                promise
                     .then(function (response) {
-                        vm.books.unshift(response.data);
-                        ngToast.create('Livro salvo com sucesso!');
+                        if(typeof self.editingBookIndex === 'number') {
+                            vm.books[self.editingBookIndex] = response.data;
+                        }
+                        else {
+                            vm.books.unshift(response.data);
+                        }
+                        ngToast.create(successMessage);
                     })
                     .catch(function (e) {
+                        console.error(e);
                         ngToast.create('Oops! Ocorreu um erro inesperado :(');
                     })
                     .finally(function () {

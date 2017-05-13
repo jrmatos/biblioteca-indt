@@ -46,9 +46,8 @@ public class BookController {
     @RequestMapping(method = RequestMethod.PUT,
         consumes = MediaType.APPLICATION_JSON_VALUE,
         produces = MediaType.APPLICATION_JSON_VALUE)
-    public Book create(@RequestBody Book book){
-    	
-        return bookService.update(book); // return the new user with id
+    public Book create(@RequestBody Book book){    	
+        return bookService.update(book);
     }
     
      

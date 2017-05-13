@@ -6,7 +6,7 @@
     .constant('ENDPOINTS', {
         saveBook: '/book/',
         removeBook: '/book/',
-        editBook: '/book/',
+        updateBook: '/book/',
         findBooks: '/book/find'
     });
     

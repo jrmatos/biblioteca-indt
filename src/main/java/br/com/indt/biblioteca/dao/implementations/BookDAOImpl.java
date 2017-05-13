@@ -22,10 +22,13 @@ public class BookDAOImpl implements BookDAO{
 		entityManager.persist(book);
 		return book;
 	}
+	
+	public Book update(Book book) {
+		entityManager.merge(book);
+		return book;
+	}
 
 	public List<Book> find() {
-//		return entityManager.createQuery("select b from Book b where b.id = :id",
-//			    Book.class).setParameter("id", id).getResultList();
 		return entityManager.createQuery("SELECT b FROM Book b ORDER BY b.id DESC", Book.class).getResultList();
 	}
 	
