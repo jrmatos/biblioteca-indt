@@ -4,12 +4,12 @@
     angular.module('library')
     .factory('LibraryService', LibraryService);
 
-    LibraryService.$inject = ['HOST', 'ENDPOINTS', '$http'];
+    LibraryService.$inject = ['HOST', 'ENDPOINTS', '$http', '$q'];
 
-    function LibraryService(HOST, ENDPOINTS, $http) {
+    function LibraryService(HOST, ENDPOINTS, $http, $q) {
 
         var _bookFilterToQueryString = function (bookFilter) {
-            if(!bookFilter) return;
+            if(!bookFilter) return '';
 
             var filters = [];
             Object.keys(bookFilter).forEach(function (attrName) {
@@ -20,7 +20,14 @@
         }
 
         var _findBooks = function (bookFilter) {
-            return $http.get(HOST + ENDPOINTS.findBooks + '?' + _bookFilterToQueryString(bookFilter));
+            return $http.get(HOST + ENDPOINTS.findBooks + '?' + _bookFilterToQueryString(bookFilter))
+                        .then(function (response) {
+                            return $q.resolve(response);
+                        })
+                        .catch(function (e) {
+                            console.error(e);
+                            return $q.resolve([]);
+                        });
         }
 
         var _saveBook = function (book) {
