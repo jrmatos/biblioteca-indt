@@ -31,8 +31,10 @@ public class BookDAOImpl implements BookDAO{
 		return book;
 	}
 
-	public List<Book> find(Book bookFilter) {
-		System.out.println(bookFilter);
+	public List<Book> find(Book bookFilter, Integer page) {
+		
+		Integer pageSize = 10;
+		Integer skip = (page != null) ? (page - 1) * pageSize: 0;
 		
 		Criteria criteria = entityManager.unwrap(Session.class).createCriteria(Book.class);
 		addRestrictionIfNotNull(criteria, "title", bookFilter.getTitle());
@@ -41,6 +43,8 @@ public class BookDAOImpl implements BookDAO{
 		addRestrictionIfNotNull(criteria, "year", bookFilter.getYear());
 		addRestrictionIfNotNull(criteria, "pages", bookFilter.getPages());
 		addRestrictionIfNotNull(criteria, "isbn", bookFilter.getIsbn());
+		criteria.setFirstResult(skip);
+		criteria.setMaxResults(pageSize);
 		
 		return criteria.list();
 	}

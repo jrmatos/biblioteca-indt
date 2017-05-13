@@ -30,8 +30,8 @@ public class BookServiceImpl implements BookService {
  
     // return all books
     @Override
-    public List<Book> find(Book bookFilter) {
-        return bookDAO.find(bookFilter);
+    public List<Book> find(Book bookFilter, Integer page) {
+        return bookDAO.find(bookFilter, page);
     }
     
  

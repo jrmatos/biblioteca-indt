@@ -61,9 +61,10 @@ public class BookController {
 				    	   @RequestParam(value="publisher", required=false) String publisher,
 				    	   @RequestParam(value="year", required=false) Integer year,
 				    	   @RequestParam(value="pages", required= false) Integer pages,
-				    	   @RequestParam(value="isbn", required=false) Integer isbn) {
+				    	   @RequestParam(value="isbn", required=false) Integer isbn,
+				    	   @RequestParam(value="page", required=false) Integer page) {
     	
-        return bookService.find(new Book(title, author, publisher, year, pages, isbn));
+        return bookService.find(new Book(title, author, publisher, year, pages, isbn), page);
     }   
     
     
