@@ -28,5 +28,10 @@ public class BookDAOImpl implements BookDAO{
 //			    Book.class).setParameter("id", id).getResultList();
 		return entityManager.createQuery("SELECT b FROM Book b ORDER BY b.id DESC", Book.class).getResultList();
 	}
+	
+	public void delete(String bookId) {
+		Book book = entityManager.find(Book.class, Integer.parseInt(bookId));
+		entityManager.remove(book);
+	}
 
 }

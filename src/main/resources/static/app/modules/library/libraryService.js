@@ -16,9 +16,14 @@
             return $http.post(HOST + ENDPOINTS.saveBook, book);
         }
 
+        var _removeBook = function (bookId) {
+            return $http.delete(HOST + ENDPOINTS.removeBook + '/' + bookId);
+        }
+
         return {
             findBooks: _findBooks,
-            saveBook: _saveBook
+            saveBook: _saveBook,
+            removeBook: _removeBook
         }
     }
 

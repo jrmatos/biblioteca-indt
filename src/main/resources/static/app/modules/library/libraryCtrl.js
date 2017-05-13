@@ -57,6 +57,20 @@
         }
 
 
+        vm.removeBook = function (bookId, $index) {
+            if(confirm('Deseja mesmo remover esse livro?')) {
+                LibraryService.removeBook(bookId)
+                .then(function (response){
+                    vm.books.splice($index, 1);
+                    ngToast.create('Livro removido com sucesso!');
+                })
+                .catch(function (e) {
+                    console.log(e)
+                });
+            }
+        }
+
+
     }
 
 })();
