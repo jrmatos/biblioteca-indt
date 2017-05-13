@@ -12,8 +12,13 @@
             return $http.get(HOST + ENDPOINTS.findBooks);
         }
 
+        var _saveBook = function (book) {
+            return $http.post(HOST + ENDPOINTS.saveBook, book);
+        }
+
         return {
-            findBooks: _findBooks
+            findBooks: _findBooks,
+            saveBook: _saveBook
         }
     }
 
