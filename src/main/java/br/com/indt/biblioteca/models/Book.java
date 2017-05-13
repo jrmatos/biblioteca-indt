@@ -13,7 +13,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
  
 @JsonIgnoreProperties(ignoreUnknown = true)
 @Entity
-@Table(name="student")
+@Table(name="book")
 public class Book implements Serializable{
      
     private static final long serialVersionUID = 1L;
@@ -45,9 +45,8 @@ public class Book implements Serializable{
 	public Book() {
 		super();
 	}
-	public Book(Integer id, String name, String author, String publisher, Integer year, Integer pages, Integer isbn) {
+	public Book(String name, String author, String publisher, Integer year, Integer pages, Integer isbn) {
 		super();
-		this.id = id;
 		this.name = name;
 		this.author = author;
 		this.publisher = publisher;

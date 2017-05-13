@@ -32,20 +32,23 @@ public class BookController {
 //        return bookService.findById(bookId);
 //    }
     
+    
+    @ResponseStatus(HttpStatus.OK)
+    @RequestMapping(method = RequestMethod.POST,
+        consumes = MediaType.APPLICATION_JSON_VALUE,
+        produces = MediaType.APPLICATION_JSON_VALUE)
+    public Book update(@RequestBody Book book){
+    	System.out.println("Create => " + book);
+        return bookService.create(book);
+    }
+    
     @ResponseStatus(HttpStatus.OK)
     @RequestMapping(method = RequestMethod.PUT,
         consumes = MediaType.APPLICATION_JSON_VALUE,
         produces = MediaType.APPLICATION_JSON_VALUE)
     public Book create(@RequestBody Book book){
-        return bookService.create(book); // return the new user with id
-    }
-    
-    
-    @ResponseStatus(HttpStatus.OK)
-    @RequestMapping(method = RequestMethod.POST,
-        consumes = MediaType.APPLICATION_JSON_VALUE)
-    public Book update(@RequestBody Book book){
-        return bookService.update(book);
+    	
+        return bookService.update(book); // return the new user with id
     }
     
      
@@ -53,8 +56,8 @@ public class BookController {
     @RequestMapping(value = "/find",
         method = RequestMethod.GET,
         produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<Book> find(Book bookFilter){
-        return bookService.find(bookFilter);
+    public List<Book> find(){
+        return bookService.find();
     }   
     
     

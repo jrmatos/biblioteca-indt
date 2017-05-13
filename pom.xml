@@ -12,23 +12,31 @@
 		<version>1.3.3.RELEASE</version>
 	</parent>
 
-	<!-- Adicionando a dependencia do Spring Boot Starter Web -->
 	<dependencies>
+		<!-- spring boot -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
+		<!-- junit -->
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>3.8.1</version>
 			<scope>test</scope>
 		</dependency>
+		<!-- Starter for using Spring Data JPA with Hibernate -->
+		<dependency>
+		    <groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot-starter-data-jpa</artifactId>
+	    </dependency>
+	    <!--  hibernate  -->
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-core</artifactId>
 			<version>4.3.5.Final</version>
 		</dependency>
+		<!--  mysql connector -->
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
@@ -36,12 +44,12 @@
 		</dependency>
 	</dependencies>
 
-	<!-- Configurando a versão do Java -->
+	<!-- config java version -->
 	<properties>
 		<java.version>1.8</java.version>
 	</properties>
 
-	<!-- Configurando o processo de build da aplicação -->
+	<!-- config build process -->
 	<build>
 		<plugins>
 			<plugin>
@@ -51,7 +59,7 @@
 		</plugins>
 	</build>
 
-	<!-- Adicionando o repositório do Spring de onde o Maven irá baixar as dependências -->
+	<!-- config maven dependency repo url -->
 	<repositories>
 		<repository>
 			<id>spring-releases</id>
@@ -59,14 +67,12 @@
 		</repository>
 	</repositories>
 
-	<!-- Adicionando o repositório do Spring de onde o Maven irá baixar os plugins -->
+	<!-- config maven plugin repo url -->
 	<pluginRepositories>
 		<pluginRepository>
 			<id>spring-releases</id>
 			<url>https://repo.spring.io/libs-release</url>
 		</pluginRepository>
 	</pluginRepositories>
-
-
 
 </project>
