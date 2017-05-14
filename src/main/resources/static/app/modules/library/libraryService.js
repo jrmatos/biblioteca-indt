@@ -4,9 +4,9 @@
     angular.module('library')
     .factory('LibraryService', LibraryService);
 
-    LibraryService.$inject = ['HOST', 'ENDPOINTS', '$http', '$q'];
+    LibraryService.$inject = ['ENDPOINTS', '$http', '$q'];
 
-    function LibraryService(HOST, ENDPOINTS, $http, $q) {
+    function LibraryService(ENDPOINTS, $http, $q) {
 
         var _bookFilterToQueryString = function (bookFilter) {
             if(!bookFilter) return '';
@@ -22,7 +22,7 @@
         }
 
         var _findBooks = function (bookFilter, page) {
-            var url = HOST + ENDPOINTS.findBooks + '/' + page + '?' + _bookFilterToQueryString(bookFilter);
+            var url = ENDPOINTS.findBooks + '/' + page + '?' + _bookFilterToQueryString(bookFilter);
             return $http.get(url)
                         .then(function (response) {
                             return $q.resolve(response);
@@ -34,16 +34,16 @@
         }
 
         var _saveBook = function (book) {
-            return $http.post(HOST + ENDPOINTS.saveBook, book);
+            return $http.post(ENDPOINTS.saveBook, book);
         }
 
         var _updateBook = function (book) {
-            var url = HOST + ENDPOINTS.updateBook;
+            var url = ENDPOINTS.updateBook;
             return $http.put(url, book);
         }
 
         var _removeBook = function (bookId) {
-            return $http.delete(HOST + ENDPOINTS.removeBook + '/' + bookId);
+            return $http.delete(ENDPOINTS.removeBook + '/' + bookId);
         }
 
         return {
