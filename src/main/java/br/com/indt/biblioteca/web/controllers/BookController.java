@@ -19,7 +19,6 @@ import br.com.indt.biblioteca.services.BookService;
  
  
 @RestController
-//Mapeia as requisições de localhost:8080/book/
 @RequestMapping("/book/")
 public class BookController {
      
@@ -31,7 +30,6 @@ public class BookController {
         consumes = MediaType.APPLICATION_JSON_VALUE,
         produces = MediaType.APPLICATION_JSON_VALUE)
     public Book create(@RequestBody Book book){
-    	System.out.println("Create => " + book);
         return bookService.create(book);
     }
     
