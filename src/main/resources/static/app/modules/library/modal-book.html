@@ -53,7 +53,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="isbn">ISBN:</label>
-                                    <input type="number" max="999999" min="0" class="form-control" name="isbn" ng-model="vm.modal.book.isbn" required>
+                                    <input type="number" max="999999" min="1" class="form-control" name="isbn" ng-model="vm.modal.book.isbn" required>
                                     <div ng-messages="bookForm.isbn.$error" ng-show="bookForm.isbn.$touched && bookForm.isbn.$invalid">
                                         <p ng-message="required">ISBN é obrigatório</p>
                                         <p ng-message="min">Valor muito baixo</p>

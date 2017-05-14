@@ -9,6 +9,7 @@ import javax.transaction.Transactional;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.criterion.MatchMode;
+import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Component;
 
@@ -36,17 +37,15 @@ public class BookDAOImpl implements BookDAO{
 		Integer skip = (page != null) ? (page - 1) * pageSize: 0;
 		
 		Criteria criteria = entityManager.unwrap(Session.class).createCriteria(Book.class);
-		addRestrictionIfNotNull(criteria, "title", bookFilter.getTitle());
-		addRestrictionIfNotNull(criteria, "author", bookFilter.getAuthor());
-		addRestrictionIfNotNull(criteria, "publisher", bookFilter.getPublisher());
-		addRestrictionIfNotNull(criteria, "year", bookFilter.getYear());
-		addRestrictionIfNotNull(criteria, "pages", bookFilter.getPages());
-		addRestrictionIfNotNull(criteria, "isbn", bookFilter.getIsbn());
+		addFilters(criteria, bookFilter);		
+		criteria.addOrder(Order.desc("id"));
 		criteria.setFirstResult(skip);
 		criteria.setMaxResults(pageSize);
 		
 		return criteria.list();
 	}
+	
+	
 	
 	public void delete(String bookId) {
 		Book book = entityManager.find(Book.class, Integer.parseInt(bookId));
@@ -59,6 +58,21 @@ public class BookDAOImpl implements BookDAO{
 				.createCriteria(Book.class)
 				.list()
 				.size();
+	}
+	
+	public Integer getBooksQuantityFilter(Book bookFilter) {
+		Criteria criteria = entityManager.unwrap(Session.class).createCriteria(Book.class);
+		addFilters(criteria, bookFilter);
+		return criteria.list().size();
+	}
+	
+	private void addFilters(Criteria criteria, Book bookFilter) {
+		addRestrictionIfNotNull(criteria, "title", bookFilter.getTitle());
+		addRestrictionIfNotNull(criteria, "author", bookFilter.getAuthor());
+		addRestrictionIfNotNull(criteria, "publisher", bookFilter.getPublisher());
+		addRestrictionIfNotNull(criteria, "year", bookFilter.getYear());
+		addRestrictionIfNotNull(criteria, "pages", bookFilter.getPages());
+		addRestrictionIfNotNull(criteria, "isbn", bookFilter.getIsbn());
 	}
 	
 	private void addRestrictionIfNotNull(Criteria criteria, String propertyName, Object value) {

@@ -16,11 +16,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class SimpleCORSFilter implements Filter {
 
-    private final Logger log = LoggerFactory.getLogger(SimpleCORSFilter.class);
-
-    public SimpleCORSFilter() {
-        log.info("SimpleCORSFilter init");
-    }
+    public SimpleCORSFilter() {}
 
     @Override
     public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain) throws IOException, ServletException {

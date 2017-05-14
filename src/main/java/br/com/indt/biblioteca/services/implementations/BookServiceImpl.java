@@ -34,16 +34,32 @@ public class BookServiceImpl implements BookService {
     // return all books
     @Override
     public FindBooksResponseDTO find(Book bookFilter, Integer page) {
-    	List<Book> books = bookDAO.find(bookFilter, page, pageSize);
-    	page = (page != null) ? page: 1;
-    	Integer totalBooks = bookDAO.getBooksQuantity();
+    	Integer totalBooks = 0;
+    	
+    	//  if it's not fintering, then totalBooks is equal to all books
+    	if(!isFiltering(bookFilter)) {
+    		totalBooks = bookDAO.getBooksQuantity();
+    	}
+    	// if it's filtering, then totalBooks is equal to the amount of books using the filter
+    	else {
+    		totalBooks = bookDAO.getBooksQuantityFilter(bookFilter);
+    	}
 
     	return new FindBooksResponseDTO(
-        		books,
-            	page,
+    			bookDAO.find(bookFilter, page, pageSize),
+    			(page != null) ? page: 1,
             	pageSize,
             	totalBooks
     	);
+    }
+    
+    private Boolean isFiltering(Book bookFilter) {
+    	return (bookFilter.getTitle() != null ||
+    			bookFilter.getAuthor() != null ||
+    			bookFilter.getPublisher() != null ||
+    			bookFilter.getYear() != null ||
+    			bookFilter.getPages() != null ||
+    			bookFilter.getIsbn() != null);
     }
     
     // delete book by id

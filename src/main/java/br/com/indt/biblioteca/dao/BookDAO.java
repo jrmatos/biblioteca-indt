@@ -11,4 +11,5 @@ public interface BookDAO {
 	public List<Book> findall();
 	public void delete(String bookId);
 	public Integer getBooksQuantity();
+	public Integer getBooksQuantityFilter(Book bookFilter);
 }

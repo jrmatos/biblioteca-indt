@@ -14,7 +14,7 @@
             var filters = [];
             Object.keys(bookFilter).forEach(function (attrName) {
                 var value = bookFilter[attrName];
-                if(value === null) return;
+                if(!value) return;
                 filters.push(attrName + '=' + bookFilter[attrName]);
             });
 
