@@ -38,8 +38,7 @@
         }
 
         var _updateBook = function (book) {
-            var url = ENDPOINTS.updateBook;
-            return $http.put(url, book);
+            return $http.put(ENDPOINTS.updateBook, book);
         }
 
         var _removeBook = function (bookId) {
