@@ -6,7 +6,6 @@ Passos para execução da aplicação
 
 3- Clonar o projeto
 
-na pasta biblioteca-indt
 $ git clone  git@github.com:jrmatos/biblioteca-indt.git
 
 4- Instalar as dependências do front end
