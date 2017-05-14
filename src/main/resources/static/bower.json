@@ -21,5 +21,8 @@
     "angular-messages": "^1.6.4",
     "ngToast": "ngtoast#^2.0.0",
     "jquery-bootpag": "^1.0.7"
+  },
+  "resolutions": {
+    "angular": "1.6.4"
   }
 }
