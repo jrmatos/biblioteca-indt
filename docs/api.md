@@ -1,7 +1,7 @@
 
 ### Buscar todos os livros cadastrados
 
-**URL**: /book/find/
+**GET**: /book/find/
 
 ```json
 [
