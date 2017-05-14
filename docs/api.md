@@ -51,3 +51,61 @@ Resultado:
 ### Remover livro
 
 **DELETE**: /book/{idDoLivro}
+
+### Criar novo livro
+
+**POST**: /book/
+
+Envio:
+```json
+{
+  "title": "(string)",
+  "author": "(string)",
+  "publisher": "(string)",
+  "year": "(number)",
+  "pages": "(number)",
+  "isbn": "(number)"   
+}
+```
+
+Resultado:
+```json
+{ 
+  "id": "(number)",
+  "title": "(string)",
+  "author": "(string)",
+  "publisher": "(string)",
+  "year": "(number)",
+  "pages": "(number)",
+  "isbn": "(number)"    
+}
+```
+### Atualizar livro
+
+**PUT**: /book/
+
+Envio:
+```json
+{
+  "id": "(number)",
+  "title": "(string)",
+  "author": "(string)",
+  "publisher": "(string)",
+  "year": "(number)",
+  "pages": "(number)",
+  "isbn": "(number)"     
+}
+```
+
+Resultado:
+```json
+{ 
+  "id": "(number)",
+  "title": "(string)",
+  "author": "(string)",
+  "publisher": "(string)",
+  "year": "(number)",
+  "pages": "(number)",
+  "isbn": "(number)"    
+}
+```
