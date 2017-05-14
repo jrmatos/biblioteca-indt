@@ -3,6 +3,8 @@
 
 **GET**: /book/find/
 
+Resultado:
+
 ```json
 [
   {
@@ -17,3 +19,31 @@
 ]
 ```
 
+### Buscar livros com paginação e filtro
+
+**GET**: /book/find/value?title=value&author=value&publisher=value&year=value&pages=value&isbn=value
+
+Exemplo: /book/find/1?title=MasteringTaiJutsu&author=RockLee&publisher=Konoha&year=2008&pages=238&isbn=8974
+
+Todos os parâmetros de filtro da query string são opcionais
+
+Resultado:
+
+```json
+{
+  "books": [
+    {
+      "id": "(number)",
+      "title": "(string)",
+      "author": "(string)",
+      "publisher": "(string)",
+      "year": "(number)",
+      "pages": "(number)",
+      "isbn": "(number)"
+    }
+  ],
+  "page": "(number)",
+  "pageSize": "(number)",
+  "totalBooks": "(number)"
+}
+```
