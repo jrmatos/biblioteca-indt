@@ -1,6 +1,6 @@
 Passos para execução da aplicação
 
-1- Criar uma base dados no MySQL com o nome 'biblioteca'
+1- Criar uma base de dados no MySQL com o nome 'biblioteca'
 
 2- Atualizar o arquivo application.properties com as configurações username e password
 
