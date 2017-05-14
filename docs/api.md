@@ -25,7 +25,7 @@ Resultado:
 
 Exemplo: /book/find/1?title=MasteringTaiJutsu&author=RockLee&publisher=Konoha&year=2008&pages=238&isbn=8974
 
-Todos os parâmetros de filtro da query string são opcionais
+Todos os parâmetros de filtro da query string são opcionais.
 
 Resultado:
 
