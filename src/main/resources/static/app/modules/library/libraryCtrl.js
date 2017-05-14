@@ -133,6 +133,7 @@
             return Math.ceil(vm.totalBooks / vm.pageSize);
         }
 
+        
         vm.findBooks();
 
 
