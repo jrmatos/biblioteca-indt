@@ -21,7 +21,7 @@ Resultado:
 
 ### Buscar livros com paginação e filtro
 
-**GET**: /book/find/value?title=value&author=value&publisher=value&year=value&pages=value&isbn=value
+**GET**: /book/find/{numeroDaPagina}?title=value&author=value&publisher=value&year=value&pages=value&isbn=value
 
 Exemplo: /book/find/1?title=MasteringTaiJutsu&author=RockLee&publisher=Konoha&year=2008&pages=238&isbn=8974
 
@@ -47,3 +47,7 @@ Resultado:
   "totalBooks": "(number)"
 }
 ```
+
+### Remover livro
+
+**DELETE**: /book/{idDoLivro}
